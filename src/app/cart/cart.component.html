@@ -1,0 +1,52 @@
+<div class="col-md-12">
+    <div class="card text-white"  style="background-color: transparent; border: none !important; margin-top: -12px;" >
+      <div class="card-title">
+        <h3 style="text-align: center;  font-family: Montserrat,sans-serif; color: gray; margin-top: 20px; text-transform: uppercase;">Tickets ({{count}})</h3>
+      </div>
+      <div *ngFor="let itemx of item" >
+        <div class="media border border-primary mt-2 p-2" style="border: 1px solid rgb(58, 57, 57) !important;" >
+            <div class="media-body">
+              <h4 #listItem style="font-family: Montserrat,sans-serif;">{{itemx.title}}</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: red;" (click)="removeItem(itemx);">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <p #listItem2 style="color: grey;font-family: Montserrat,sans-serif;">No. of Tickets : {{itemx.quantity}}</p>
+              <p #listItem3 style="margin-top: -10px; color: grey;font-family: Montserrat,sans-serif;">Cost : R {{itemx.itemCost}}</p>
+              <p #listItem4 style="text-align: right; color: grey;font-family: Montserrat,sans-serif;">Total : R {{itemx.totalCost}}</p>
+            </div>
+          </div>
+      
+    </div>
+      <div *ngIf="count==0">
+        <h5 style="text-align: center;color: grey;font-family: Montserrat,sans-serif; text-transform: uppercase;">Your list is empty</h5>
+        <h5 style="text-align: center;color: grey;font-family: Montserrat,sans-serif; text-transform: uppercase; font-size: 12px;">You have not selected any tickets</h5>
+      </div>
+      <p style="text-align: right; font-weight: 600; font-family: Montserrat,sans-serif; margin-top: 10px; font-size: 16px;" *ngIf="count > 0">Total Cost : R {{total}}</p>
+      <a>
+      <div class="button1" *ngIf="count > 0" (click)="addToCart()" >
+        <div class="line"></div> 
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <span>Buy Now</span>
+      </div>
+    </a>
+      <a>
+      <div class="button2" *ngIf="count > 0" (click)="clearCart()" >
+        <div class="line"></div> 
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <span>Clear Cart</span>
+      </div>
+    </a>
+<!--       <a style="font-family: Montserrat,sans-serif; border: 1px solid rgb(30, 150, 0); " class="btn btn-outline-secondary mt-2" *ngIf="count > 0" (click)="addToCart()"><strong>Add To Cart</strong></a> -->
+<!--       <a href="" style="font-family: Montserrat,sans-serif; border: 1px solid red; " class="btn btn-outline-secondary mt-2" *ngIf="count > 0" (click)="clearCart()"><strong>Clear Cart</strong></a>
+ -->    </div>
+  </div>
+  
+  

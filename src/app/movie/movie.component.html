@@ -1,0 +1,129 @@
+ 
+  <div class="row">
+    <div class="col-md-12" >
+      <div class="search">
+        <input #searchBox type="text" name="searchBox" class="search"  (keyup)="searchMovie(searchBox.value)" placeholder="Search for a movie"
+        style="background-color: #212326 !important; color: gray !important; border: none !important; margin-top: 30px; height: 80px; border-radius: 3px; display: block;
+        margin-left: auto; margin-right: auto; text-align:left; font-size: 2.0em; width: 100% !important; padding-left: 15px; font-family: Montserrat,sans-serif;"/> 
+      </div>  
+  <div class="row cardsMove" style="align-content: center; justify-content: center;display: flex;">
+  <div *ngFor="let movie of multiple" [class.selected]="movie === selectedMovie"(click)="onSelect(movie)">
+  <div class="col-md-12">
+    <div class="card mt-2" style="max-width: 8rem;background-color: transparent;border-color: transparent; padding-bottom: 12px;">
+        <a (click)=toggleDisplay()>
+            <img class="card-img mt-2" src="{{movie.Poster}}" alt="" width="200" height="180">
+    <div class="card-body">
+        <h4 class="title" style="white-space: nowrap!important; width: 100px!important; overflow: hidden!important; text-overflow: ellipsis!important; ">{{movie.Title}}</h4>
+        <h4 class="year">{{movie.Year}}</h4>
+        <h4 class="title">R 50</h4>
+        <div *ngIf="!isShow">
+
+          <div href =""class="button" data-toggle="modal" data-target="#exampleModal" style="min-width: 100% !important;">
+            <div class="line"></div> 
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <span>Book Now</span>
+          </div>
+
+
+<!--             <a href="" class="btn btn-outline-secondary"data-toggle="modal" data-target="#exampleModal" style="min-width: 100% !important;">Book Now</a>
+ -->        </div>
+    </div>
+    </a>
+    </div>
+  </div>
+  </div>
+    </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="background-color: #3b3b3b;">
+        <div class="modal-header" style=" border: none !important">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+<div class="col-md-12">
+    <div class="row" style="align-content: center;justify-content: center;display: flex;">
+      <div class="card" style="background-color: #282828; margin-top: -20px;">
+        <div class="card-body">
+          <div *ngIf="movie2" class="card mb-3 text-white" style="max-width: 750px;background-color: transparent;border-color: transparent;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="{{movie2.Poster}}" class="card-img" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: left; margin-top: -20px; font-family: Montserrat,sans-serif;" >{{movie2.Title}}  </h5>
+                  <h6 class="card-title" style="text-align: left; font-family: Montserrat,sans-serif;">IMDB : {{movie2.imdbRating}}/10</h6>
+                  <br>
+                    <br>
+                    <p style="margin-top: -25px; font-family: Montserrat,sans-serif;">{{movie2.Plot}}</p>
+                   <br>
+                    <p style="text-align: left; font-family: Montserrat,sans-serif;"><strong> Release Year :  </strong>  {{movie2.Year}}</p>
+                    <p style="font-family: Montserrat,sans-serif;"><strong>Genre : </strong> {{movie2.Genre}}</p>
+                    <p style="font-family: Montserrat,sans-serif;"><strong>Runtime : </strong>{{movie2.Runtime}}</p>
+                    <p style="font-family: Montserrat,sans-serif;"><strong>Awards :</strong> {{movie2.Awards}}</p>
+                    <p style="font-family: Montserrat,sans-serif;"><strong>Production : </strong> {{movie2.Production}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+        </div>
+      </div>
+      
+    </div>
+  </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="background-color: #3b3b3b;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: #fff !important;font-family: Montserrat,sans-serif;" >How many tickets would you like to buy for {{selectedMovie.Title}} ?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label style="color: #fff !important;font-family: Montserrat,sans-serif;"> No. of Tickets : 
+            <input type="text" #numberTickets id="numberTickets" value=1 min=1 max=1/>
+          </label>
+          
+        </div>
+        <div class="modal-footer">
+          
+          <button type="submit" (click)="addToCart(selectedMovie,numberTickets.value); numberTickets.value=1"  class="btn btn-primary" data-dismiss="modal" style="background-color: rgb(0, 151, 8) !important; border: none !important;" >Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
+  </script>
+  <script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  </script>
+  
+
+
+
+  
+   
+      
+   
