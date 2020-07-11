@@ -4,6 +4,7 @@ import {CartComponent} from '../app/cart/cart.component';
 import {Cart} from '../app/Cart';
 import { Checkout } from 'src/checkout';
 import { HttpClient } from '@angular/common/http';
+import { CartLogic } from './cartLogic';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +12,18 @@ import { HttpClient } from '@angular/common/http';
 export class CartService {
 
   items=[];
-  cartItem: Cart = {id:0,title:"",quantity:0,itemCost:0,totalCost:0}
-
+  cartItem: Cart = {id:0,cartId:0,title:"",quantity:0,itemCost:0,totalCost:0}
+  cartId:number;
   total = 0;
   value:Cart;
   checkout:Checkout;
   
-  private cartUrl = "http://localhost:56236/api/cart";
+  private cartUrl = "http://localhost:55522/api/cart";
   private itemUrl = "http://localhost:56236/api/item";
   constructor(private httpClient: HttpClient) { }
 
   addToCart(movie:any,quantity:number,price:number){ 
-
+ 
     var _totalCost = price * quantity;
     var _quantity = Number(quantity);
     var _flag =false;
@@ -45,15 +46,36 @@ export class CartService {
   }
 }
   id = 0;
+  waitForOneSecond() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve("I promise to return after one second!");
+      }, 500);
+    });
+  }
 
+  
   setCart(cart:any,quantity:number,price:number,totalCost:number){
-    this.value = {
-      id:cart.imdbID,
-      title:cart.Title,
-      quantity:quantity,
-      itemCost:price,
-      totalCost:totalCost
-    }
+ 
+/*     setInterval (()=> {
+      this.httpClient.get<Cart[]>(this.cartUrl).subscribe(data => {
+        this.cartId = data[data.length - 1].cartId;
+        console.log(data);
+        
+      }) 
+  }, 400);     */
+  
+     this.httpClient.get<Cart[]>(this.cartUrl).subscribe(data =>{
+      this.cartId = data[data.length - 1].cartId;
+      console.log(data);
+    }); 
+
+    this.waitForOneSecond().then((value)=>{
+      console.log(this.cartId);
+    this.cartItem.cartId = this.cartId + 1;
+
+    })
+
     this.cartItem.id = this.id;
     this.cartItem.title = cart.Title;
     this.cartItem.quantity = quantity;

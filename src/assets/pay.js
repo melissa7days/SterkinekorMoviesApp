@@ -5,9 +5,9 @@ var ticketCost = 0;
 var movieTotal = 0;
 var total = 0;
 var cartId = 0;
+var orderPaymentId = 0;
 let paymentsClient = null;
 let attempts = 0;
-
 const baseRequest = {
   apiVersion: 2,
   apiVersionMinor: 0
@@ -77,12 +77,24 @@ function getGooglePaymentsClient() {
   return paymentsClient;
 }
 var paymentSuccessMessage = "Successful Payment";
+var status = "Paid";
+var currentdate = new Date(); 
+var datetime = "Last Sync: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+console.log(datetime);
+
+var date = new Date(datetime);
+
 function onPaymentAuthorized(paymentData) {
   return new Promise(function(resolve, reject){
     processPayment(paymentData)
       .then(function() {
         resolve({transactionState: 'SUCCESS'});
-        fetch('http://localhost:56236/api/payment',{
+        fetch('http://localhost:55522/api/payment',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -92,6 +104,21 @@ function onPaymentAuthorized(paymentData) {
         }).then((res) => res.json())
         .then((data) => console.log(data))
         .catch((err) => console.log(err))
+
+        fetch('http://localhost:55522/api/orderdetails',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },            
+          body: JSON.stringify({paymentId:orderPaymentId,cartId:cartId,id:itemId,orderStatus:status,orderDate:date})
+        }).then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err))
+
+
+
+
         var test = document.getElementById("demo").innerHTML = paymentSuccessMessage;
         if(document.getElementById("pay").style.display == "none"){
           document.getElementById("pay").style.display = "block";
@@ -109,7 +136,7 @@ function onPaymentAuthorized(paymentData) {
         var paidTotal = 0;
        setInterval(function(){
          console.log("cart id: "+cartId);
-         fetch(`http://localhost:56236/api/payment/getpaymentdetails?cartid=${cartId}&itemid=${itemId}`)
+         fetch(`http://localhost:55522/api/payment/getpaymentdetails?cartid=${cartId}&itemid=${itemId}`)
          .then(result => result.json())
          .then(test => {
              test.forEach(function(user){
@@ -167,7 +194,7 @@ function myFunction() {
 }
 
 setInterval(function(){ 
-  fetch('http://localhost:56236/api/cart')
+  fetch('http://localhost:55522/api/cart')
   .then(result => result.json())
   .then(users => {
   users.forEach(function(user){
@@ -176,7 +203,7 @@ setInterval(function(){
     document.getElementById('finalTotal').innerHTML = "<strong>Total</strong> : R" + total+".00";
   })
 }); 
-fetch('http://localhost:56236/api/item')
+fetch('http://localhost:55522/api/item')
 .then(result => result.json())
 .then(users => {
     users.forEach(function(user){
@@ -191,14 +218,17 @@ fetch('http://localhost:56236/api/item')
       document.getElementById('itemTotal').innerHTML = "<strong>Total Cost</strong> : R" + movieTotal+".00";
     })
 });
- 
+fetch('http://localhost:55522/api/payment')
+.then(result => result.json())
+.then(users => {
+    users.forEach(function(user){
+      orderPaymentId = user.paymentId + 1;
+    })
+});
  }, 3000);
 
-
-
-
  
-fetch('http://localhost:56236/api/cart')
+fetch('http://localhost:55522/api/cart')
 .then(result => result.json())
 .then(users => {
     users.forEach(function(user){
@@ -207,7 +237,7 @@ fetch('http://localhost:56236/api/cart')
     })
 }); 
 
-fetch('http://localhost:56236/api/item')
+fetch('http://localhost:55522/api/item')
 .then(result => result.json())
 .then(users => {
     users.forEach(function(user){

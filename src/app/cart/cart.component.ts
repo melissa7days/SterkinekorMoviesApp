@@ -16,7 +16,7 @@ import { title } from 'process';
 export class CartComponent implements OnInit {
 
   item:Cart[] = [];
-  cartItem: Cart = {id:0,title:"",quantity:0,itemCost:0,totalCost:0}
+  cartItem: Cart = {id:0,cartId:0,title:"",quantity:0,itemCost:0,totalCost:0}
   total = 0;
   count=0;
   id=0;
@@ -38,16 +38,20 @@ export class CartComponent implements OnInit {
     this.total = this.cartService.total;
     this.numberOfItems();
   }
+
   addToCart(){
-    console.log(this.item);
-    var item = this.http.post<Cart[]>('http://localhost:56236/api/item', this.item).subscribe(()=>{}); 
-    this.http.post<CartLogic>('http://localhost:56236/api/cart', {finalTotal:this.total}).subscribe(data =>{
+    this.http.post<CartLogic>('http://localhost:55522/api/cart', {finalTotal:this.total}).subscribe(data =>{
       console.log(data);
       this.cartId = data.cartId;
       window.alert("Your tickets have been added, you can now checkout!");
 
     })
-    
+    // this.http.get<Cart[]>('http://localhost:55522/api/cart').subscribe(data =>{
+    //   console.log("get",data);
+    // })
+      var item = this.http.post<Cart[]>('http://localhost:55522/api/item', this.item).subscribe(()=>{}); 
+
+
   }
   removeItem(item:any) : void {
     this.cartService.removeItem(item);
