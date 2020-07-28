@@ -9,6 +9,11 @@ The website built using Angular 9 that is pulling the movie details from the OMD
 Below are the steps the user would take to book a movie: 
 1. The first step the user would usually take is to either search for a movie or look for the suggested list of movies that they have been given. Once the user finds a movie that they're looking for, they'll click on the movie and a book now button will drop down
 
+
+![2](https://user-images.githubusercontent.com/62884014/88654789-23c25480-d0ce-11ea-8418-62a0ea907cd6.png)
+
+
+
 2. Now that the user clicked the book now button, a modal will pop up that will prompt the user to enter a quantity for the number of tickets that they would like to purchase. 
 
 3. Once the user enters their quantity and clicks on the confirm button, the movie that they have selected, the ticket quantity and the ticket cost have been added to their cart. Their total is also displayed. 
