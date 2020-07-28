@@ -56,11 +56,6 @@ Below are the steps the user would take to book a movie:
 ![8](https://user-images.githubusercontent.com/62884014/88655602-443ede80-d0cf-11ea-97b1-fb01bce7d576.png)
 
 
-8. The user is provided with an order number so if the merchant wants to check that their order has been process, they can check the db by taking that order number and entering it in the system. 
-
-
-![9](https://user-images.githubusercontent.com/62884014/88655675-5f115300-d0cf-11ea-9812-e266003dfcb5.png)
-
 
 
 
