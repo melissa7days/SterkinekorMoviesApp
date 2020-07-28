@@ -40,21 +40,19 @@ Below are the steps the user would take to book a movie:
 
 
 
-6. To pay, the user will click on the "Buy with Google Pay" button and they're taken to Google Pay's secure payment portal. 
+6. To pay, the user will click on the "Buy with Google Pay" button and they're taken to Google Pay's secure payment portal. The user will enter their gmail address and their credit or debit card details. THey payment portal will show them the total amount they're about to make a payment for. 
 
 
 ![7](https://user-images.githubusercontent.com/62884014/88655496-23768900-d0cf-11ea-827f-81df83741b55.jpg)
 
 
-7. The user will enter their gmail address and their credit or debit card details. THey payment portal will show them the total amount they're about to make a payment for. 
-
-8. Once the user is ready to pay, they'll click on the "Pay" button. On the first click it will throw an error message saying that there is insufficient funds, but the next try they'll be able to make their purchase. If the users payment was successful, they are prompted with a successful payment message and their order details are displayed. 
+7. Once the user is ready to pay, they'll click on the "Pay" button. On the first click it will throw an error message saying that there is insufficient funds, but the next try they'll be able to make their purchase. If the users payment was successful, they are prompted with a successful payment message and their order details are displayed. 
 
 
 ![8](https://user-images.githubusercontent.com/62884014/88655602-443ede80-d0cf-11ea-97b1-fb01bce7d576.png)
 
 
-9. The user is provided with an order number so if the merchant wants to check that their order has been process, they can check the db by taking that order number and entering it in the system. 
+8. The user is provided with an order number so if the merchant wants to check that their order has been process, they can check the db by taking that order number and entering it in the system. 
 
 
 ![9](https://user-images.githubusercontent.com/62884014/88655675-5f115300-d0cf-11ea-9812-e266003dfcb5.png)
