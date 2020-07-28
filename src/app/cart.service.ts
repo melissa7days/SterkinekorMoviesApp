@@ -53,18 +53,10 @@ export class CartService {
       }, 500);
     });
   }
-
+  fetchPromise = fetch(this.cartUrl);
+  
   
   setCart(cart:any,quantity:number,price:number,totalCost:number){
- 
-/*     setInterval (()=> {
-      this.httpClient.get<Cart[]>(this.cartUrl).subscribe(data => {
-        this.cartId = data[data.length - 1].cartId;
-        console.log(data);
-        
-      }) 
-  }, 400);     */
-  
      this.httpClient.get<Cart[]>(this.cartUrl).subscribe(data =>{
       this.cartId = data[data.length - 1].cartId;
       console.log(data);
