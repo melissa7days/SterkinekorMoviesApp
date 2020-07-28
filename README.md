@@ -16,6 +16,8 @@ Below are the steps the user would take to book a movie:
 
 2. Now that the user clicked the book now button, a modal will pop up that will prompt the user to enter a quantity for the number of tickets that they would like to purchase. 
 
+
+
 3. Once the user enters their quantity and clicks on the confirm button, the movie that they have selected, the ticket quantity and the ticket cost have been added to their cart. Their total is also displayed. 
 
 4. If the user is ready to purchase their tickets, they will click on the buy now button and they're then prompted with an alert that's telling them that their tickets have been added to the cart and they can now checkout. 
