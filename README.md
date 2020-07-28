@@ -9,6 +9,7 @@ The website is built using Angular 9 that is pulling the movie details from the 
 https://github.com/melissa7days/SterkinekorMoviesAPI 
 I have also integrated Google Pay as a payment method for the user to pay for their tickets.
 
+# Site Flow
 Below are the steps the user would take to book a movie: 
 1. The first step the user would usually take is to either search for a movie or look for the suggested list of movies that they have been given. Once the user finds a movie that they're looking for, they'll click on the movie and a book now button will drop down
 
@@ -64,7 +65,7 @@ Below are the steps the user would take to book a movie:
 
 
 
-
+# Database Diagram
 Below is the database diagram that I am using to store the users cart, payment and order details: 
 
 
@@ -72,7 +73,7 @@ Below is the database diagram that I am using to store the users cart, payment a
 
 
 
-
+# Google Pay
 I have used the google pay developer documentation to implement the payment portal https://developers.google.com/pay/api 
 
 
