@@ -58,3 +58,14 @@ Below are the steps the user would take to book a movie:
 ![9](https://user-images.githubusercontent.com/62884014/88655675-5f115300-d0cf-11ea-9812-e266003dfcb5.png)
 
 
+
+
+
+
+Below is the database diagram that I am using to store the users cart, payment and order details: 
+
+
+![db](https://user-images.githubusercontent.com/62884014/88656219-3f2e5f00-d0d0-11ea-92a7-d593e57a3732.PNG)
+
+
+
