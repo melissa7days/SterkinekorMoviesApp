@@ -72,7 +72,7 @@ Below is the database diagram that I am using to store the users cart, payment a
 
 
 
-Google Pay Integration Steps: 
+Google Pay Integration Steps ( I have used the google pay developer documentation to implement this https://developers.google.com/pay/api ) : 
 
 
 Step 1: Define the Google Pay API Version 
