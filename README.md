@@ -77,3 +77,15 @@ Below is the database diagram that I am using to store the users cart, payment a
 I have used the google pay developer documentation to implement the payment portal https://developers.google.com/pay/api 
 
 
+
+
+
+# Google Pay Process Flow 
+![gpay](https://user-images.githubusercontent.com/62884014/88670537-7a875880-d0e5-11ea-8ac6-71dbb25cbaa0.PNG)
+
+
+
+
+# Website Flow 
+![flow](https://user-images.githubusercontent.com/62884014/88670703-ad315100-d0e5-11ea-94e0-3cda71f31401.PNG)
+
