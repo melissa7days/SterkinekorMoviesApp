@@ -1,5 +1,8 @@
 This is my Sterkinkor movie booking website that I have developed to give users the ability to search for a movie, select a movie that they have searched for, add their tickets to the cart and finally buy their movie tickets using Google Pay. 
+
 ![1](https://user-images.githubusercontent.com/62884014/88650761-4d2cb180-d0c9-11ea-8fc5-46e4a23bb2a1.png)
+
+
 
 The website built using Angular 9 that is pulling the movie details from the OMDB API. The users interactions such as adding to cart, paying and their order details are being stored in a local db that I have created using SQL Server and is also using a local API built with .Net Core to communicate to the website. I have also integrated Google Pay as a payment method for the user to pay for their tickets.
 
