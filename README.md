@@ -4,7 +4,9 @@ This is my Sterkinkor movie booking website that I have developed to give users 
 
 
 
-The website built using Angular 9 that is pulling the movie details from the OMDB API. The users interactions such as adding to cart, paying and their order details are being stored in a local db that I have created using SQL Server and is also using a local API built with .Net Core to communicate to the website. I have also integrated Google Pay as a payment method for the user to pay for their tickets.
+The website is built using Angular 9 that is pulling the movie details from the OMDB API. The users interactions such as adding to cart, paying and their order details are being stored in a local db that I have created using SQL Server and is also using a local API built with .Net Core to communicate to the website. Here is the github link to the API: 
+https://github.com/melissa7days/SterkinekorMoviesAPI 
+I have also integrated Google Pay as a payment method for the user to pay for their tickets.
 
 Below are the steps the user would take to book a movie: 
 1. The first step the user would usually take is to either search for a movie or look for the suggested list of movies that they have been given. Once the user finds a movie that they're looking for, they'll click on the movie and a book now button will drop down
